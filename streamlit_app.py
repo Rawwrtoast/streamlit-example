@@ -26,8 +26,8 @@ def read_file(bucket_name, file_path):
     content = bucket.blob(file_path).download_as_string().decode("utf-8")
     return content
 
-bucket_name = "streamlit-bucket"
-file_path = "myfile.csv"
+bucket_name = "snake_apartment"
+file_path = "cleandata.csv"
 
 content = read_file(bucket_name, file_path)
 #---------------------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ st.plotly_chart(line_avgmedprice_by_month)
 
 st.write("Price range of Apartments")
 ordersOfMag_list = ["", "Thousand", "Million", "Billion", "Trillion"]
-for i in range(4,-1,-1):
+for i in range(3,-1,-1):
     orderOfMag = 1000**i
     if (min := df['TransAmt'].min() / orderOfMag) > 0:
         min = str(min) + " " + ordersOfMag_list[i]
